@@ -1,0 +1,37 @@
+{
+  "name": "dashboard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:frontend": "vite",
+    "dev:backend": "cd ../../ && uvicorn attendence.backend.main:app --reload --port 8000 --no-access-log",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "agentation": "3.0.2",
+    "chart.js": "4.5.1",
+    "framer-motion": "12.40.0",
+    "jwt-decode": "4.0.0",
+    "react": "19.2.6",
+    "react-chartjs-2": "5.3.1",
+    "react-dom": "19.2.6",
+    "react-router-dom": "7.18.0",
+    "recharts": "3.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.1",
+    "concurrently": "10.0.3",
+    "eslint": "10.3.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.2",
+    "globals": "17.6.0",
+    "vite": "8.0.12"
+  }
+}

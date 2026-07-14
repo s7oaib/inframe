@@ -1,0 +1,51 @@
+# Node.js / Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python / FastAPI
+__pycache__/
+.pytest_cache/
+.venv/
+env/
+venv/
+ENV/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Databases
+inframe.db
+inframe.db-journal
+*.sqlite
+*.db
+
+# Environment Variables
+.env
+.env.development
+.env.production
+
+# IDEs & System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Unused directories
+Open-Generative-AI/
