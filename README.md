@@ -1,125 +1,237 @@
 # Inframe — AI Classroom Attendance System
 
-Inframe is a modern, real-time facial recognition attendance system designed for educational institutions. Using CCTV camera feeds and facial embeddings, Inframe automates attendance logging, provides real-time visualization of classroom attendance status, and enables administrators and students to manage schedules, view reports, and analyze attendance trends.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/FastAPI-0.137-009688?logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white" alt="Vercel" />
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" />
+</p>
 
-[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://inframe-dashboard.vercel.app/)
-[![React](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.137-green?logo=fastapi)](https://fastapi.tiangolo.com/)
+> **Inframe** is a modern, real-time facial recognition attendance system designed for educational institutions. Using CCTV camera feeds and facial embeddings, it automates attendance logging, provides real-time classroom attendance visualization, and enables administrators and students to manage schedules, view reports, and analyze attendance trends.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Live Demo
 
-*   **Real-time Tracking:** Real-time logging of classroom entries and exits via WebSockets.
-*   **Facial Recognition Pipeline:** Face detection, liveness checking, and embedding comparisons.
-*   **Student Portal:** Simple registration and login for students to view their attendance history and register their profiles.
-*   **Instructor Dashboard:** Full management suite for sessions, schedule conflicts, student verification, and exports.
-*   **Analytics & Reporting:** Interactive charts showing daily attendance, top-performing students, and customizable reports (CSV/JSON exports).
-*   **Webcam Photo Enrollment:** High-quality face capture directly from the client interface with active user consent.
+| Service | URL |
+|---------|-----|
+| **Frontend Dashboard** | [https://inframe-dashboard.vercel.app](https://inframe-dashboard.vercel.app) |
+| **API Docs (Swagger)** | `https://your-backend-api.com/docs` |
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Real-time Attendance** | Live camera feed with face detection & recognition via WebSockets |
+| **Facial Recognition Pipeline** | Face detection → liveness check → embedding comparison |
+| **Student Portal** | Registration, login, attendance history, profile management |
+| **Instructor Dashboard** | Session management, schedule conflicts, student verification, exports |
+| **Analytics & Reports** | Daily trends, top attendees, customizable CSV/PDF/Excel exports |
+| **Webcam Enrollment** | High-quality face capture with active user consent |
+| **Role-based Access** | JWT-based auth with role separation (Admin, Instructor, Student) |
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Backend
-*   **Core:** Python, FastAPI
-*   **Database:** SQLite, SQLAlchemy ORM
-*   **Facial Processing:** Face embeddings & recognition
-*   **Server:** Uvicorn (WebSockets enabled)
+| Layer | Technology |
+|-------|------------|
+| API Framework | **FastAPI** (Python 3.10+) |
+| Database | **SQLite** + **SQLAlchemy ORM** |
+| Face Recognition | Custom embeddings + similarity search |
+| Real-time | **WebSockets** (Uvicorn) |
+| Auth | **JWT** (access + refresh tokens) |
 
-### Frontend (Dashboard)
-*   **Framework:** React 19 (Vite 8)
-*   **Animations:** Framer Motion
-*   **Charts:** Chart.js, Recharts, React Chartjs 2
-*   **Routing:** React Router v7
+### Frontend
+| Layer | Technology |
+|-------|------------|
+| Framework | **React 19** + **Vite 8** |
+| Routing | **React Router v7** |
+| Styling | **Tailwind CSS** + **Framer Motion** |
+| Charts | **Recharts**, **Chart.js** |
+| State | React Context + Custom Hooks |
+| HTTP | **Axios** with interceptors |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Project Attendence/
-├── .gitignore                   # Root gitignore excluding caches, databases & node_modules
-├── README.md                    # Project documentation
+inframe/
+├── .gitignore
+├── README.md
 ├── attendence/
-│   ├── backend/                 # FastAPI backend application
-│   │   ├── config.py            # Overridable thresholds and app configuration
-│   │   ├── database.py          # SQLAlchemy models and SQLite connection
-│   │   ├── main.py              # Application startup, lifespan and root routes
-│   │   ├── routes/              # API router modules (attendance, schedule, students, etc.)
-│   │   ├── services/            # Face recognition embeddings & auth services
-│   │   └── requirements.txt     # Python dependencies
+│   ├── backend/                 # FastAPI backend
+│   │   ├── config.py            # Config & thresholds
+│   │   ├── database.py          # SQLAlchemy models & DB
+│   │   ├── main.py              # App entry, lifespan, routes
+│   │   ├── routes/              # API routers
+│   │   │   ├── attendance.py
+│   │   │   ├── auth.py
+│   │   │   ├── schedule.py
+│   │   │   ├── students.py
+│   │   │   └── ...
+│   │   ├── services/            # Business logic
+│   │   │   ├── face_recognition.py
+│   │   │   └── auth_service.py
+│   │   └── requirements.txt
 │   │
-│   └── dashboard/               # React + Vite frontend dashboard
-│       ├── src/                 # React component source code
-│       ├── public/              # Static assets
-│       ├── package.json         # Node dependencies and npm scripts
-│       ├── vercel.json          # Vercel deployment SPA rewrite configuration
-│       └── vite.config.js       # Vite proxy settings for development
-└── inframe.db                   # Local SQLite database (ignored by Git)
+│   └── dashboard/               # React + Vite frontend
+│       ├── src/
+│       │   ├── api/             # Axios client & endpoints
+│       │   ├── components/      # Reusable UI components
+│       │   ├── context/         # AuthContext, etc.
+│       │   ├── hooks/           # Custom React hooks
+│       │   ├── pages/           # Page components
+│       │   └── main.jsx         # App entry
+│       ├── public/
+│       ├── package.json
+│       ├── vercel.json          # Vercel SPA config
+│       └── vite.config.js
+│
+└── inframe.db                   # SQLite DB (gitignored)
 ```
 
 ---
 
-## 💻 Local Setup Guide
+## 💻 Local Development
+
+### Prerequisites
+- **Python 3.10+**
+- **Node.js 18+**
+- **Git**
 
 ### 1. Backend Setup
+```bash
+cd attendence/backend
 
-Make sure you have Python 3.10+ installed.
+# Create virtual environment
+python -m venv .venv
+# Windows:
+.venv\Scripts\Activate.ps1
+# macOS/Linux:
+source .venv/bin/activate
 
-1. Navigate to the backend directory:
-   ```bash
-   cd attendence/backend
-   ```
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv
-   # Windows PowerShell:
-   .venv\Scripts\Activate.ps1
-   # macOS/Linux:
-   source .venv/bin/activate
-   ```
-3. Install the dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Start the FastAPI server:
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
-   The backend will be running at `http://localhost:8000`. Swagger documentation is available at `http://localhost:8000/docs`.
+# Install dependencies
+pip install -r requirements.txt
+
+# Run server (with auto-reload)
+uvicorn main:app --reload --port 8000
+```
+> API docs available at `http://localhost:8000/docs`
 
 ### 2. Frontend Setup
+```bash
+cd attendence/dashboard
 
-Make sure you have Node.js 18+ installed.
+# Install dependencies
+npm install
 
-1. Navigate to the dashboard directory:
-   ```bash
-   cd attendence/dashboard
-   ```
-2. Install npm packages:
-   ```bash
-   npm install
-   ```
-3. Start the development server (runs Vite and proxies API requests):
-   ```bash
-   npm run dev
-   ```
-   The dashboard will be running at `http://localhost:5174` (or `http://localhost:5173`).
+# Start dev server (proxies API to backend)
+npm run dev
+```
+> Frontend runs at `http://localhost:5174` (proxies `/api` → `http://localhost:8000`)
 
 ---
 
 ## 🌐 Production Deployment
 
-### Frontend (Vercel)
-The React dashboard is configured for seamless deployment to **Vercel** with SPA fallback rewrites.
-1. Build the production site locally or set the build settings on Vercel to:
-   * **Build Command:** `npm run build`
-   * **Output Directory:** `dist`
-   * **Install Command:** `npm install`
-2. Set the `VITE_API_URL` environment variable on Vercel to point to your deployed FastAPI backend (e.g. `https://your-backend-api.com`).
+### Frontend → Vercel (Automatic)
+1. Push to GitHub → Connect repo in Vercel
+2. Build settings auto-detected from `vercel.json`:
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+   - **Install Command:** `npm install`
+3. Set `VITE_API_URL` env var to your backend URL
+4. Deploy 🚀
+
+### Backend Options
+| Platform | Notes |
+|----------|-------|
+| **Render / Railway / Fly.io** | Native Python support, WebSocket support |
+| **Docker + VPS** | Full control, Dockerfile included below |
+| **AWS/GCP/Azure** | Container services or VMs |
+
+#### Dockerfile (Backend)
+```dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 8000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+---
+
+## 🔐 Environment Variables
+
+### Backend (`attendence/backend/.env`)
+```env
+SECRET_KEY=your-super-secret-jwt-key
+DATABASE_URL=sqlite:///./inframe.db
+ALLOWED_ORIGINS=http://localhost:5174,https://inframe-dashboard.vercel.app
+```
+
+### Frontend (`attendence/dashboard/.env`)
+```env
+VITE_API_URL=http://localhost:8000
+# Production:
+# VITE_API_URL=https://your-backend-api.com
+```
+
+---
+
+## 📚 API Reference
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/login` | Login (returns access + refresh tokens) |
+| `POST` | `/api/auth/register` | Student registration |
+| `GET` | `/api/students` | List all students |
+| `POST` | `/api/students` | Create student |
+| `GET` | `/api/attendance` | Get attendance records |
+| `POST` | `/api/attendance` | Log attendance |
+| `GET` | `/api/schedule` | Get schedule |
+| `POST` | `/api/schedule` | Create session |
+| `WS` | `/ws/attendance` | Real-time attendance feed |
+
+> Full interactive docs: `GET /docs` (Swagger UI)
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'feat: add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ---
 
 ## 📄 License
-This project is proprietary and confidential. All rights reserved.
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Face Recognition** — Inspired by face_recognition library concepts
+- **UI Components** — Built with Tailwind CSS + Framer Motion
+- **Charts** — Recharts & Chart.js communities
+- **Deployment** — Vercel for seamless frontend hosting
+
+---
+
+<p align="center">
+  Made with ❤️ for modern education
+</p>
