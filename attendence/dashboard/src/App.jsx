@@ -15,12 +15,6 @@ import Login from './pages/Login';
 export default function App() {
   return (
     <AuthProvider>
-      <Agentation
-        endpoint="http://localhost:4747"
-        onSessionCreated={(sessionId) => {
-          console.log("Session started:", sessionId);
-        }}
-      />
       <BrowserRouter>
         <div className="app-container">
           <Routes>
