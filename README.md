@@ -1,66 +1,50 @@
 # Inframe — AI Classroom Attendance System
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black" alt="React 19" />
-  <img src="https://img.shields.io/badge/FastAPI-0.137-009688?logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
- <a href="https://inframe-dashboard.vercel.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white" alt="Vercel" />
-</a>
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" />
-</p>
+React 19 FastAPI Python Vite SQLite Vercel MIT License
 
-> **Inframe** is a modern, real-time facial recognition attendance system designed for educational institutions. Using CCTV camera feeds and facial embeddings, it automates attendance logging, provides real-time classroom attendance visualization, and enables administrators and students to manage schedules, view reports, and analyze attendance trends.
-
----
+Inframe is a modern, real-time facial recognition attendance system designed for educational institutions. Using CCTV camera feeds and facial embeddings, it automates attendance logging, provides real-time classroom attendance visualization, and enables administrators and students to manage schedules, view reports, and analyze attendance trends.
 
 ## 🚀 Live Demo
 
 | Service | URL |
 |---------|-----|
-| **Frontend Dashboard** | [https://inframe-dashboard.vercel.app](https://inframe-dashboard.vercel.app) |
-| **API Docs (Swagger)** | `https://your-backend-api.com/docs` |
-
----
+| Frontend Dashboard | https://inframe-dashboard.vercel.app |
+| API Docs (Swagger) | https://your-backend-api.com/docs |
 
 ## ✨ Key Features
 
 | Feature | Description |
 |---------|-------------|
-| **Real-time Attendance** | Live camera feed with face detection & recognition via WebSockets |
-| **Facial Recognition Pipeline** | Face detection → liveness check → embedding comparison |
-| **Student Portal** | Registration, login, attendance history, profile management |
-| **Instructor Dashboard** | Session management, schedule conflicts, student verification, exports |
-| **Analytics & Reports** | Daily trends, top attendees, customizable CSV/PDF/Excel exports |
-| **Webcam Enrollment** | High-quality face capture with active user consent |
-| **Role-based Access** | JWT-based auth with role separation (Admin, Instructor, Student) |
-
----
+| Real-time Attendance | Live camera feed with face detection & recognition via WebSockets |
+| Facial Recognition Pipeline | Face detection → liveness check → embedding comparison |
+| Student Portal | Registration, login, attendance history, profile management |
+| Instructor Dashboard | Session management, schedule conflicts, student verification, exports |
+| Analytics & Reports | Daily trends, top attendees, customizable CSV/PDF/Excel exports |
+| Webcam Enrollment | High-quality face capture with active user consent |
+| Role-based Access | JWT-based auth with role separation (Admin, Instructor, Student) |
 
 ## 🛠 Tech Stack
 
 ### Backend
+
 | Layer | Technology |
 |-------|------------|
-| API Framework | **FastAPI** (Python 3.10+) |
-| Database | **SQLite** + **SQLAlchemy ORM** |
+| API Framework | FastAPI (Python 3.10+) |
+| Database | SQLite + SQLAlchemy ORM |
 | Face Recognition | Custom embeddings + similarity search |
-| Real-time | **WebSockets** (Uvicorn) |
-| Auth | **JWT** (access + refresh tokens) |
+| Real-time | WebSockets (Uvicorn) |
+| Auth | JWT (access + refresh tokens) |
 
 ### Frontend
+
 | Layer | Technology |
 |-------|------------|
-| Framework | **React 19** + **Vite 8** |
-| Routing | **React Router v7** |
-| Styling | **Tailwind CSS** + **Framer Motion** |
-| Charts | **Recharts**, **Chart.js** |
+| Framework | React 19 + Vite 8 |
+| Routing | React Router v7 |
+| Styling | Tailwind CSS + Framer Motion |
+| Charts | Recharts, Chart.js |
 | State | React Context + Custom Hooks |
-| HTTP | **Axios** with interceptors |
-
----
+| HTTP | Axios with interceptors |
 
 ## 📁 Project Structure
 
@@ -100,16 +84,16 @@ inframe/
 └── inframe.db                   # SQLite DB (gitignored)
 ```
 
----
-
 ## 💻 Local Development
 
 ### Prerequisites
-- **Python 3.10+**
-- **Node.js 18+**
-- **Git**
+
+- Python 3.10+
+- Node.js 18+
+- Git
 
 ### 1. Backend Setup
+
 ```bash
 cd attendence/backend
 
@@ -126,9 +110,11 @@ pip install -r requirements.txt
 # Run server (with auto-reload)
 uvicorn main:app --reload --port 8000
 ```
-> API docs available at `http://localhost:8000/docs`
+
+API docs available at http://localhost:8000/docs
 
 ### 2. Frontend Setup
+
 ```bash
 cd attendence/dashboard
 
@@ -138,45 +124,41 @@ npm install
 # Start dev server (proxies API to backend)
 npm run dev
 ```
-> Frontend runs at `http://localhost:5174` (proxies `/api` → `http://localhost:8000`)
 
----
-
+Frontend runs at http://localhost:5174 (proxies `/api` → http://localhost:8000)
 
 ## 🔐 Environment Variables
 
 ### Backend (`attendence/backend/.env`)
+
 ```env
 SECRET_KEY=your-super-secret-jwt-key
 DATABASE_URL=sqlite:///./inframe.db
 ```
 
 ### Frontend (`attendence/dashboard/.env`)
+
 ```env
 VITE_API_URL=http://localhost:8000
 # Production:
 # VITE_API_URL=https://your-backend-api.com
 ```
 
----
-
 ## 📚 API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/auth/login` | Login (returns access + refresh tokens) |
-| `POST` | `/api/auth/register` | Student registration |
-| `GET` | `/api/students` | List all students |
-| `POST` | `/api/students` | Create student |
-| `GET` | `/api/attendance` | Get attendance records |
-| `POST` | `/api/attendance` | Log attendance |
-| `GET` | `/api/schedule` | Get schedule |
-| `POST` | `/api/schedule` | Create session |
-| `WS` | `/ws/attendance` | Real-time attendance feed |
+| POST | `/api/auth/login` | Login (returns access + refresh tokens) |
+| POST | `/api/auth/register` | Student registration |
+| GET | `/api/students` | List all students |
+| POST | `/api/students` | Create student |
+| GET | `/api/attendance` | Get attendance records |
+| POST | `/api/attendance` | Log attendance |
+| GET | `/api/schedule` | Get schedule |
+| POST | `/api/schedule` | Create session |
+| WS | `/ws/attendance` | Real-time attendance feed |
 
-> Full interactive docs: `GET /docs` (Swagger UI)
-
----
+Full interactive docs: `GET /docs` (Swagger UI)
 
 ## 🤝 Contributing
 
@@ -186,19 +168,13 @@ VITE_API_URL=http://localhost:8000
 4. Push to branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
----
-
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
+This project is licensed under the MIT License — see the [LICENSE](file:///c:/Users/shoai/OneDrive/Desktop/Project%20Attendence/LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- **Face Recognition** — Inspired by face_recognition library concepts
+- **Face Recognition** — Inspired by `face_recognition` library concepts
 - **UI Components** — Built with Tailwind CSS + Framer Motion
 - **Charts** — Recharts & Chart.js communities
 - **Deployment** — Vercel for seamless frontend hosting
-
----
