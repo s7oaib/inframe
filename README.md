@@ -9,7 +9,6 @@ Inframe is a modern, real-time facial recognition attendance system designed for
 | Service | URL |
 |---------|-----|
 | Frontend Dashboard | https://inframe-dashboard.vercel.app |
-| API Docs (Swagger) | https://your-backend-api.com/docs |
 
 ## ✨ Key Features
 
