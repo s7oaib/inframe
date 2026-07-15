@@ -12,8 +12,6 @@ import Schedule from './pages/Schedule';
 import StudentPortal from './pages/StudentPortal';
 import Login from './pages/Login';
 
-import { Agentation } from 'agentation';
-
 export default function App() {
   return (
     <AuthProvider>
