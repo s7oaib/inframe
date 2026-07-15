@@ -1,5 +1,4 @@
 {
-  "rootDirectory": "attendence/dashboard",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "rewrites": [
