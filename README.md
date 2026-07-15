@@ -6,7 +6,9 @@
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite" />
   <img src="https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
+ <a href="https://inframe-dashboard.vercel.app/" target="_blank">
   <img src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white" alt="Vercel" />
+</a>
   <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" />
 </p>
 
@@ -140,36 +142,6 @@ npm run dev
 
 ---
 
-## 🌐 Production Deployment
-
-### Frontend → Vercel (Automatic)
-1. Push to GitHub → Connect repo in Vercel
-2. Build settings auto-detected from `vercel.json`:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-   - **Install Command:** `npm install`
-3. Set `VITE_API_URL` env var to your backend URL
-4. Deploy 🚀
-
-### Backend Options
-| Platform | Notes |
-|----------|-------|
-| **Render / Railway / Fly.io** | Native Python support, WebSocket support |
-| **Docker + VPS** | Full control, Dockerfile included below |
-| **AWS/GCP/Azure** | Container services or VMs |
-
-#### Dockerfile (Backend)
-```dockerfile
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
----
 
 ## 🔐 Environment Variables
 
@@ -177,7 +149,6 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```env
 SECRET_KEY=your-super-secret-jwt-key
 DATABASE_URL=sqlite:///./inframe.db
-ALLOWED_ORIGINS=http://localhost:5174,https://inframe-dashboard.vercel.app
 ```
 
 ### Frontend (`attendence/dashboard/.env`)
@@ -231,7 +202,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 - **Deployment** — Vercel for seamless frontend hosting
 
 ---
-
-<p align="center">
-  Made with ❤️ for modern education
-</p>
